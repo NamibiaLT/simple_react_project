@@ -23,7 +23,7 @@ var dreamJob = {
   title: 'Software Engineer',
   start: 'July 31st',
   location: 'San Fran'
-}
+};
 
 function getLocation(location) {
   if (location) {
@@ -31,14 +31,23 @@ function getLocation(location) {
   } // else: it implicitly returns undefined
 }
 
+function getTitle(title) {
+  if (title) {
+    return <p> Job title:{title}</p>;
+  } else {
+    return 'Unknown';
+  }
+}
+
 var templateThree = (
   <div>
     <h1>Dream Job details:</h1>
-    <p>Job Title: {dreamJob.title}</p>
+    <p>Job Title: {getTitle(dreamJob.title)}</p>
     <p>My dream job starts on: {dreamJob.start}</p>
     <p>My dream job is located in: {dreamJob.location}</p>
   </div>
 );
+
 var templateTwo = (
   <div>
     <h1>{user.name? user.name : 'Anonymous'}</h1>

@@ -31,7 +31,7 @@ function getLocation(location) {
   } // else: it implicitly returns undefined
 }
 
-var template = (
+var templateThree = (
   <div>
     <h1>Dream Job details:</h1>
     <p>Job Title: {dreamJob.title}</p>
@@ -48,4 +48,4 @@ var templateTwo = (
 );
 var appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
 // ReactDom takes 2 args: 1) your jsx var 2)where you want to render the jsx
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateThree, appRoot);

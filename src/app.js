@@ -4,7 +4,7 @@ console.log('App.js is running!');
 var appInfo = {
   title: 'Indecision App',
   subtitle: 'Hey, you are awesome and you got this',
-  options:
+  options: []
 };
 
 var template = (

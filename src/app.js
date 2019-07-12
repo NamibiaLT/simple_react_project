@@ -10,7 +10,7 @@ var template = (
   <div>
     <h1>{appInfo.title}</h1>
     {appInfo.subtitle && <p> {appInfo.subtitle} </p>}
-    {(appInfo.options).length > 0 ? "Here are your options" : "No options"}
+    {appInfo.options.length > 0 ? "Here are your options" : "No options"}
   </div>
 );
 

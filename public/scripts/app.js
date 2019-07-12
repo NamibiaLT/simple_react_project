@@ -5,8 +5,7 @@ console.log('App.js is running!');
 // JSX
 var appInfo = {
   title: 'Indecision App',
-  subtitle: 'Hey, you are awesome and you got this',
-  options: ['One', 'Two']
+  subtitle: 'Hey, you are awesome and you got this'
 };
 
 var template = React.createElement(

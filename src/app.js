@@ -3,13 +3,15 @@ console.log('App.js is running!');
 // JSX
 var appInfo = {
   title: 'Indecision App',
-  subtitle: 'Hey, you are awesome and you got this'
+  subtitle: 'Hey, you are awesome and you got this',
+  options: ['One', 'Two']
 };
 
 var template = (
   <div>
     <h1>{appInfo.title}</h1>
-    <p> {appInfo.subtitle} </p>
+    {appInfo.subtitle && <p> {appInfo.subtitle} </p>}
+    {(appInfo.options).length > 0 ? "Here are your options" : "No options"}
   </div>
 );
 
@@ -50,12 +52,12 @@ var templateThree = (
 
 var templateTwo = (
   <div>
-    <h1>{user.name? user.name : 'Anonymous'}</h1>
-    <p>Age: {user.age}</p>
+    <h1>{user.name ? user.name : 'Anonymous'}</h1>
+    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
     {getLocation(user.location)}
-  </div>
+  </div> // user.age logical && operator first checks if there is an age, then if that age is greater than 18, then if it is prints out the age
 );
 
 var appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
 // ReactDom takes 2 args: 1) your jsx var 2)where you want to render the jsx
-ReactDOM.render(templateThree, appRoot);
+ReactDOM.render(template, appRoot);

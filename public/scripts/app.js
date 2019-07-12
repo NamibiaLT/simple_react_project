@@ -5,7 +5,8 @@ console.log('App.js is running!');
 // JSX
 var appInfo = {
   title: 'Indecision App',
-  subtitle: 'Hey, you are awesome and you got this'
+  subtitle: 'Hey, you are awesome and you got this',
+  options: ['One', 'Two']
 };
 
 var template = React.createElement(
@@ -16,13 +17,14 @@ var template = React.createElement(
     null,
     appInfo.title
   ),
-  React.createElement(
+  appInfo.subtitle && React.createElement(
     'p',
     null,
     ' ',
     appInfo.subtitle,
     ' '
-  )
+  ),
+  appInfo.options.length > 0 ? "Here are your options" : "No options"
 );
 
 var user = {
@@ -33,7 +35,7 @@ var user = {
 
 var dreamJob = {
   title: 'Software Engineer',
-  start: 'July 31st',
+  start: 'July 31st,2019',
   location: 'San Fran'
 };
 
@@ -97,14 +99,15 @@ var templateTwo = React.createElement(
     null,
     user.name ? user.name : 'Anonymous'
   ),
-  React.createElement(
+  user.age && user.age >= 18 && React.createElement(
     'p',
     null,
     'Age: ',
     user.age
   ),
   getLocation(user.location)
-);
+) // user.age logical && operator first checks if there is an age, then if that age is greater than 18, then if it is prints out the age
+;
 
 var appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
 // ReactDom takes 2 args: 1) your jsx var 2)where you want to render the jsx

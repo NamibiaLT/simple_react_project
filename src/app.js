@@ -3,7 +3,8 @@ console.log('App.js is running!');
 // JSX
 var appInfo = {
   title: 'Indecision App',
-  subtitle: 'Hey, you are awesome and you got this'
+  subtitle: 'Hey, you are awesome and you got this',
+  options:
 };
 
 var template = (

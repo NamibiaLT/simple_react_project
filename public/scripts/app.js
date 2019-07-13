@@ -21,8 +21,10 @@ console.log(petName);
 // Block scoping:
 
 var fullName = 'Jerry Garcia';
+var firstName = void 0;
+
 if (fullName) {
-  var firstName = fullName.split(' ')[0];
+  firstName = fullName.split(' ')[0];
   console.log(firstName);
 }
 

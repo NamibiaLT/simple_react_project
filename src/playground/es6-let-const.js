@@ -13,5 +13,5 @@ function getPetName() {
   return petName;
 }
 
-getPetName();
+const petName = getPetName();
 console.log(petName);

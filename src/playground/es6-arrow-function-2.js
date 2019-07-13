@@ -10,10 +10,28 @@ const user = {
   name: 'Tina',
   cities: ['Phili', 'NY', 'SF'],
   printPlacesLived() {
-    this.cities.forEach((city) => {
-      console.log(this.name + ' has lived in ' + city);
+    return this.cities.map((city) => {
+      return this.name + ' has lived in ' + city;
+    });
+    return cityMessages;
+
+    // this.cities.forEach((city) => {
+    //   console.log(this.name + ' has lived in ' + city);
+    // });
+  }
+};
+
+console.log(user.printPlacesLived());
+
+
+// Practice multiplying variable:
+const multiplier = {
+  numbers: [1, 2, 3],
+  multiply(multiplyBy) {
+    return this.numbers.map((number) => {
+      return number * multiplyBy
     });
   }
 };
 
-user.printPlacesLived();
+console.log(multiplier.multiply(10));

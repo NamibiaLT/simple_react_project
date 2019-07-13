@@ -14,10 +14,27 @@ var user = {
   printPlacesLived: function printPlacesLived() {
     var _this = this;
 
-    this.cities.forEach(function (city) {
-      console.log(_this.name + ' has lived in ' + city);
+    return this.cities.map(function (city) {
+      return _this.name + ' has lived in ' + city;
+    });
+    return cityMessages;
+
+    // this.cities.forEach((city) => {
+    //   console.log(this.name + ' has lived in ' + city);
+    // });
+  }
+};
+
+console.log(user.printPlacesLived());
+
+// Practice multiplying variable:
+var multiplier = {
+  numbers: [1, 2, 3],
+  multiply: function multiply(multiplyBy) {
+    return this.numbers.map(function (number) {
+      return number * multiplyBy;
     });
   }
 };
 
-user.printPlacesLived();
+console.log(multiplier.multiply(10));

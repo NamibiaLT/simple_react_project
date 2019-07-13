@@ -9,7 +9,7 @@ const add = function (a, b) {
 const user = {
   name: 'Tina',
   cities: ['Phili', 'NY', 'SF'],
-  printPlavesLived: function () {
+  printPlacesLived() {
     this.cities.forEach((city) => {
       console.log(this.name + ' has lived in ' + city);
     });

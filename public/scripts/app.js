@@ -11,7 +11,7 @@ var add = function add(a, b) {
 var user = {
   name: 'Tina',
   cities: ['Phili', 'NY', 'SF'],
-  printPlavesLived: function printPlavesLived() {
+  printPlacesLived: function printPlacesLived() {
     var _this = this;
 
     this.cities.forEach(function (city) {

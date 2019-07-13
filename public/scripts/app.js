@@ -1,40 +1,50 @@
 'use strict';
 
-// arguments object - no longer bound w/ arrow functions
-var add = function add(a, b) {
-  return a + b;
-  console.log(arguments); // if you need the arguments object, to return all arguments passed in to function, then you need to struction your body like this, an ES5 function
+console.log('App.js is running!');
+
+// JSX
+var appInfo = {
+  title: 'Indecision App',
+  subtitle: 'Hey, you are awesome and you got this',
+  options: []
 };
 
-// this keyword - no longer bound with arrow functions
+var template = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    appInfo.title
+  ),
+  appInfo.subtitle && React.createElement(
+    'p',
+    null,
+    ' ',
+    appInfo.subtitle,
+    ' '
+  ),
+  appInfo.options.length > 0 ? "Here are your options" : "No options"
+);
 
-var user = {
-  name: 'Tina',
-  cities: ['Phili', 'NY', 'SF'],
-  printPlacesLived: function printPlacesLived() {
-    var _this = this;
+//Counter App:
+var count = 0;
+var templateTwo = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    ' Count: ',
+    count
+  ),
+  React.createElement(
+    'button',
+    { id: 'my-id', className: 'button' },
+    ' add 1 '
+  )
+);
 
-    return this.cities.map(function (city) {
-      return _this.name + ' has lived in ' + city;
-    });
-    return cityMessages;
-
-    // this.cities.forEach((city) => {
-    //   console.log(this.name + ' has lived in ' + city);
-    // });
-  }
-};
-
-console.log(user.printPlacesLived());
-
-// Practice multiplying variable:
-var multiplier = {
-  numbers: [1, 2, 3],
-  multiply: function multiply(multiplyBy) {
-    return this.numbers.map(function (number) {
-      return number * multiplyBy;
-    });
-  }
-};
-
-console.log(multiplier.multiply(10));
+var appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
+// ReactDom takes 2 args: 1) your jsx var 2)where you want to render the jsx
+ReactDOM.render(templateTwo, appRoot);

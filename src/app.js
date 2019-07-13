@@ -15,49 +15,16 @@ const template = (
   </div>
 );
 
-const user = {
-  name: 'Torri',
-  age: 1000,
-  location: 'San Francisco'
-};
 
-const dreamJob = {
-  title: ' Software Engineer',
-  start: 'July 31st,2019',
-  location: 'San Fran'
-};
-
-function getLocation(location) {
-  if (location) {
-    return <p>Location: {location}</p>;
-  } // else: it implicitly returns undefined
-}
-
-function getTitle(title) {
-  if (title) {
-    return <p> Job title:{title}</p>;
-  } else {
-    return 'Unknown';
-  }
-}
-
-const templateThree = (
-  <div>
-    <h1>Dream Job details:</h1>
-    <p>{getTitle(dreamJob.title)}</p>
-    <p>My dream job starts on: {dreamJob.start}</p>
-    <p>My dream job is located in: {dreamJob.location}</p>
-  </div>
-);
-
+//Counter App:
+let count = 0;
 const templateTwo = (
   <div>
-    <h1>{user.name ? user.name : 'Anonymous'}</h1>
-    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-    {getLocation(user.location)}
-  </div> // user.age logical && operator first checks if there is an age, then if that age is greater than 18, then if it is prints out the age
+    <h1> Count: {count}</h1>
+    <button id="my-id" className="button"> add 1 </button>
+  </div>
 );
 
 const appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
 // ReactDom takes 2 args: 1) your jsx var 2)where you want to render the jsx
-ReactDOM.render(templateThree, appRoot);
+ReactDOM.render(templateTwo, appRoot);

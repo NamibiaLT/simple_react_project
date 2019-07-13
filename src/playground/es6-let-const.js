@@ -9,7 +9,7 @@ const nameConst = 'Fran';
 console.log('nameConst', nameConst);
 
 function getPetName() {
-  var petName = 'Hugo';
+  const petName = 'Hugo';
   return petName;
 }
 

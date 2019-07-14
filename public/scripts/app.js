@@ -27,7 +27,16 @@ var onFormSubmit = function onFormSubmit(e) {
   }
 };
 
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * appInfo.options.length);
+  var option = appInfo.options[randomNum];
+  alert(option);
+  console.log(randomNum);
+};
+
 var appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
+
+var numbers = [10, 100, 110];
 
 var renderApp = function renderApp() {
   var template = React.createElement(
@@ -51,14 +60,26 @@ var renderApp = function renderApp() {
       appInfo.options.length > 0 ? "Here are your options" : "No options"
     ),
     React.createElement(
-      'p',
-      null,
-      appInfo.options.length
+      'button',
+      { disabled: appInfo.options.length === 0, onClick: onMakeDecision },
+      ' What should I do? '
     ),
     React.createElement(
       'button',
       { onClick: onRemoveAll },
       ' Reset '
+    ),
+    React.createElement(
+      'ol',
+      null,
+      appInfo.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          ' Option: ',
+          option
+        );
+      })
     ),
     React.createElement(
       'form',

@@ -9,71 +9,70 @@ var appInfo = {
   options: []
 };
 
-var template = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    appInfo.title
-  ),
-  appInfo.subtitle && React.createElement(
-    'p',
-    null,
-    ' ',
-    appInfo.subtitle,
-    ' '
-  ),
-  appInfo.options.length > 0 ? "Here are your options" : "No options"
-);
+var onRemoveAll = function onRemoveAll() {
+  appInfo.options = [];
+  renderApp();
+};
 
-//Counter App:
-var count = 0;
-var addOne = function addOne() {
-  count++;
-  renderCounterApp();
-};
-var minusOne = function minusOne() {
-  count--;
-  renderCounterApp();
-};
-var reset = function reset() {
-  count = 0;
-  renderCounterApp();
+var onFormSubmit = function onFormSubmit(e) {
+  // e stands for "event"
+  e.preventDefault(); // stops the full page refresh
+
+  var option = e.target.elements.option.value;
+
+  if (option) {
+    appInfo.options.push(option);
+    e.target.elements.option.value = '';
+    renderApp();
+  }
 };
 
 var appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
-// ReactDom takes 2 args: 1) your jsx var 2)where you want to render the jsx
 
-
-var renderCounterApp = function renderCounterApp() {
-  var templateTwo = React.createElement(
+var renderApp = function renderApp() {
+  var template = React.createElement(
     'div',
     null,
     React.createElement(
       'h1',
       null,
-      ' Count: ',
-      count
+      appInfo.title
+    ),
+    appInfo.subtitle && React.createElement(
+      'p',
+      null,
+      ' ',
+      appInfo.subtitle,
+      ' '
+    ),
+    React.createElement(
+      'p',
+      null,
+      appInfo.options.length > 0 ? "Here are your options" : "No options"
+    ),
+    React.createElement(
+      'p',
+      null,
+      appInfo.options.length
     ),
     React.createElement(
       'button',
-      { onClick: addOne },
-      ' + 1 '
+      { onClick: onRemoveAll },
+      ' Reset '
     ),
     React.createElement(
-      'button',
-      { onClick: minusOne },
-      ' - 1 '
-    ),
-    React.createElement(
-      'button',
-      { onClick: reset },
-      ' reset '
+      'form',
+      { onSubmit: onFormSubmit },
+      React.createElement('input', { type: 'text', name: 'option' }),
+      React.createElement(
+        'button',
+        null,
+        ' Add Option'
+      )
     )
   );
 
-  ReactDOM.render(templateTwo, appRoot);
+  ReactDOM.render(template, appRoot);
 };
 
-renderCounterApp();
+renderApp();

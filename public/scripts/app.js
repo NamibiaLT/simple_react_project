@@ -29,22 +29,51 @@ var template = React.createElement(
 
 //Counter App:
 var count = 0;
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    ' Count: ',
-    count
-  ),
-  React.createElement(
-    'button',
-    { id: 'my-id', className: 'button' },
-    ' add 1 '
-  )
-);
+var addOne = function addOne() {
+  count++;
+  renderCounterApp();
+};
+var minusOne = function minusOne() {
+  count--;
+  renderCounterApp();
+};
+var reset = function reset() {
+  count = 0;
+  renderCounterApp();
+};
 
 var appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
 // ReactDom takes 2 args: 1) your jsx var 2)where you want to render the jsx
-ReactDOM.render(templateTwo, appRoot);
+
+
+var renderCounterApp = function renderCounterApp() {
+  var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      ' Count: ',
+      count
+    ),
+    React.createElement(
+      'button',
+      { onClick: addOne },
+      ' + 1 '
+    ),
+    React.createElement(
+      'button',
+      { onClick: minusOne },
+      ' - 1 '
+    ),
+    React.createElement(
+      'button',
+      { onClick: reset },
+      ' reset '
+    )
+  );
+
+  ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();

@@ -1,66 +1,101 @@
-console.log('App.js is running!');
+// import React, { Component } from 'react'
 
-// JSX
-const appInfo = {
-  title: 'Indecision App',
-  subtitle: 'Hey, you are awesome and you got this',
-  options: []
-};
-
-const onRemoveAll = () => {
-  appInfo.options = [];
-  renderApp();
+const obj = {
+  name:'Holly',
+  getName() {
+    return this.name;
+  }
 }
 
-const onFormSubmit = (e) => { // e stands for "event"
-  e.preventDefault(); // stops the full page refresh
-
-  const option = e.target.elements.option.value;
-
-  if (option) {
-    appInfo.options.push(option);
-    e.target.elements.option.value = '';
-    renderApp();
+class IndecisionApp extends React.Component {
+  render() {
+    const title = 'Indecision';
+    const subtitle = 'Subtitle here';
+    const options = ['thing 1', 'thing 2', 'thing 4', 'thing 5']
+    return (
+      <div>
+        <Header title={title} subtitle={subtitle}/>
+        <Action />
+        <Options options={options}/>
+      </div>
+    );
   }
-};
+}
 
-const onMakeDecision = () => {
-  const randomNum = Math.floor(Math.random() * appInfo.options.length);
-  const option = appInfo.options[randomNum];
-  alert(option);
-  console.log(randomNum);
-};
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.title}</h1>
+        <h2> {this.props.subtitle} </h2>
+      </div>
+    );
+  }
+}
 
+class Action extends React.Component {
+  handlePick() {
+    alert('handle pick');
+  }
 
-const appRoot = document.getElementById('app'); // This refers to the id we gave our div tag in the indx.html file
+  render() {
+    return (
+      <div>
+        <button onClick={this.handlePick}> You go tthis!</button>
+      </div>
+    );
+  }
+}
 
-const numbers = [10, 100, 110];
+class Options extends React.Component {
+  handleRemoveAll() {
 
-const renderApp = () => {
-  const template = (
-    <div>
-      <h1>{appInfo.title}</h1>
-      {appInfo.subtitle && <p> {appInfo.subtitle} </p>}
-      <p>{appInfo.options.length > 0 ? "Here are your options" : "No options"}</p>
-      <button disabled={appInfo.options.length === 0} onClick={onMakeDecision}> What should I do? </button>
-      <button onClick={onRemoveAll}> Reset </button>
-      <ol>
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleRemoveAll}></button>
+          {
+            this.props.options.map((option) => <Option key={option} optionText={option} />)
+          }
+     </div>
+    );
+  }
+}
+
+class Option extends React.Component {
+  render() {
+    return (
+      <div>
         {
-          appInfo.options.map((option) => {
-            return <li key={option}> Option: {option}</li>;
-          })
+          this.props.optionText
         }
-      </ol>
-      <form onSubmit= {onFormSubmit}>
-        <input type="text" name="option" />
-        <button> Add Option</button>
-      </form>
-    </div>
-  );
+      </div>
+    );
+  }
+}
 
-  ReactDOM.render(template, appRoot);
-};
+class AddOption extends React.Component {
+  handleAddOption(e) {
+    e.preventDefault();
 
-renderApp();
+    const option = e.target.elements.option.value.trim();
+
+    if (option) {
+      alert(option);
+    }
+  }
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleAddOption}>
+          <input type= "text" name="option">Add Option</input>
+          <button>Submit</button>
+        </form>
+      </div>
+    );
+  }
+}
 
 
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
